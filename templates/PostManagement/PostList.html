@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h2>Post </h2>
+     <div class="row row-cols-1 row-cols-md-3">
+
+        {% for p in Post %}
+ <div class="col mb-4">
+
+          <div class="card h-100" >
+            <img src="{{ p.Post_image.url }}"class="card-img-top" alt="..." width="600" height="300">
+            <div class="card-body">
+              <h3 class="card-title" style="color:blue;">{{ p.Post_title }}</h3>
+              <p class="card-text">
+                  <p><b>Location: </b>{{ p.Post_location }}</p>
+                <p><b>Category: </b>{{ p.Post_catagory }}</p>
+                <p><b>Posted By: </b>{{ p.User.username }}</p>
+
+              </p>
+
+                {# http://127.0.0.1:8000/products/    #}
+                <a href="{{ p.id }}">
+                    {# http://127.0.0.1:8000/products/product_id    #}
+                    <button type="button" class="btn btn-outline-primary">Details</button>
+                </a>
+            </div>
+          </div>
+        </div>
+    {% endfor%}
+</div>
+{% endblock content %}
